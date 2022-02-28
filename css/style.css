@@ -1,0 +1,107 @@
+body {
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+small {
+    font-size: 18px;
+    color: red;
+    font-style: italic;
+}
+
+#main {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    color: white;
+    background-color: red;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 42px;
+    padding: 0 1% 0 3%;
+}
+
+#data-hora {
+    text-align: right;
+}
+
+#horarios {
+    font-size: 48px;
+}
+
+.horario {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 95%;
+    padding: 5px;
+    border-radius: 40px;
+    margin: 15px auto;
+    height: 60px;
+    padding: 10px 0;
+}
+
+.horario-header {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 95%;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 42px;
+}
+
+.servico {
+    text-align: center;
+    width: 20%;
+    height: 50px;
+    float: left;
+}
+
+.destino {
+    text-align: center;
+    width: 40%;
+    height: 50px;
+    float: left;
+}
+
+.linha {
+    text-align: center;
+    width: 20%;
+    height: 50px;
+    float: left;
+}
+
+.hora {
+    text-align: center;
+    width: 20%;
+    height: 50px;
+    float: left;
+}
+
+footer {
+    overflow: hidden;
+    background-color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: solid 5px red;
+}
+
+footer h2 {
+    float: left;
+    margin: 15px 0px 10px 40px;
+    padding: 0px;
+    color: red;
+}
+
+footer img {
+    float: right;
+    margin: 10px 40px 10px 0px;
+}
