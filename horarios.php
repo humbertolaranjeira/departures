@@ -7,9 +7,12 @@ $day_of_week = getDayOffWeek();
 // interval
 $interval = getDateRange();
 
+$periodo = PERIODO;
+
 //echo $interval['min'] . " " . $interval['max'] . "<br>";
 
-$sql = "SELECT * FROM horarios WHERE dia LIKE '$day_of_week' AND hora BETWEEN '$interval[min]' and '$interval[max]' ORDER BY hora ASC limit 0,8";
+$sql = "SELECT * FROM horarios WHERE dia LIKE '$day_of_week' AND periodo = '$periodo' AND hora BETWEEN '$interval[min]' and '$interval[max]' ORDER BY hora ASC limit 0,8";
+
 //$sql = "SELECT * FROM horarios WHERE dia LIKE '$day_of_week' ORDER BY hora ASC limit 0,8";
 //echo $sql;
 $horarios = $conn->query($sql);

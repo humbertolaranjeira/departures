@@ -35,8 +35,15 @@ if (isset($_REQUEST['day'])) {
     }
 }
 if (isset($_POST['save'])) {
-    $sql = "INSERT INTO horarios (id, servico, destino, linha, hora, dia, status)
-VALUES ('', '$_POST[servico]', '$_POST[destino]', $_POST[linha], '$_POST[hora]', '$day_of_week', 'OK')";
+
+    if($_POST["linha"] == ""){
+        $linha = "";
+    }
+    else{
+        $linha = $_POST["linha"];
+    }
+    $sql = "INSERT INTO horarios (id, servico, destino, linha, hora, dia, periodo, status)
+VALUES ('', '$_POST[servico]', '$_POST[destino]', '$linha', '$_POST[hora]', '$day_of_week', '$_POST[periodo]', 'OK')";
 
     if ($conn->query($sql) === TRUE) {
         $saved = "success";
@@ -44,7 +51,7 @@ VALUES ('', '$_POST[servico]', '$_POST[destino]', $_POST[linha], '$_POST[hora]',
         $saved = "error";
     }
 
-    $conn->close();
+    //$conn->close();
 }
 
 ?>
@@ -103,7 +110,7 @@ VALUES ('', '$_POST[servico]', '$_POST[destino]', $_POST[linha], '$_POST[hora]',
             <div class="col-sm input-form-horarios">
                 <div class="form-group">
                     <label for="linha">Linha</label>
-                    <input type="text" class="form-control" id="linha" name="linha" placeholder="Linha" required>
+                    <input type="text" class="form-control" id="linha" name="linha" placeholder="Linha">
                 </div>
             </div>
             <div class="col-sm input-form-horarios">
@@ -111,6 +118,22 @@ VALUES ('', '$_POST[servico]', '$_POST[destino]', $_POST[linha], '$_POST[hora]',
                     <label for="linha">Hora</label>
                     <input type="time" class="form-control" id="hora" name="hora" placeholder="Linha" required>
                     <input type="hidden" class="form-control" id="dia" name="dia" value="<?php echo $day_of_week; ?>">
+                </div>
+            </div>
+            <div class="col-sm input-form-horarios">
+                <div class="form-group">
+                    <label for="periodo">Periodo</label>
+                    <select class="form-control" id="periodo" name="periodo" required>
+                    <?php
+                        $sql = "SELECT * FROM periodos WHERE activo = 1 ORDER BY periodo_id";
+                        $periodos = $conn->query($sql);
+                        foreach($periodos as $periodo){
+                    ?>
+                        <option value="<?php echo $periodo['periodo_id'] ?>"><?php echo $periodo['abreviatura'] ?></option>
+                    <?php
+                        }
+                    ?>
+                    </select>
                 </div>
             </div>
         </div>

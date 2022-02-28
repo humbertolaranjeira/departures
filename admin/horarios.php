@@ -96,7 +96,8 @@ if ($count_horarios == 0) {
                     <th scope="col">Destino</th>
                     <th scope="col">Linha</th>
                     <th scope="col">Hora</th>
-                    <th style="text-align:center;" scope="col">Remover</th>
+                    <th scope="col">Periodo</th>
+                    <th style="text-align:center;" scope="col">Editar/Remover</th>
                 </tr>
             </thead>
             <tbody>
@@ -115,7 +116,18 @@ if ($count_horarios == 0) {
                             echo date_format($hora, 'H:i');
                             ?>
                         </td>
-                        <td style="text-align:center;"><a href="?page=horarios&remove=<?php echo $horario['id'] ?>&day=<?php echo $_REQUEST['day']; ?>" onclick="return confirm('Tem a certeza que quer remover este horário?');"><i class="fa fa-minus-square" style="color:red;"></i></a></td>
+                        <td>
+                            <?php
+                                $sql = "SELECT periodo FROM periodos WHERE periodo_id =" . $horario["periodo"];
+                                $result = $conn->query($sql); 
+                                $periodo = $result->fetch_array(); 
+                                echo $periodo["periodo"];
+                            ?>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="?page=editarHorario&horario=<?php echo $horario['id'] ?>&day=<?php echo $_REQUEST['day']; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                            <a href="?page=horarios&remove=<?php echo $horario['id'] ?>&day=<?php echo $_REQUEST['day']; ?>" onclick="return confirm('Tem a certeza que quer remover este horário?');"><i class="fa fa-minus-square" style="color:red;"></i></a>
+                        </td>
                     </tr>
             <?php
                 endforeach;

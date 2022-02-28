@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "painel";
+    $dbname = "painel_v1";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
