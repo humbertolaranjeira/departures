@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
 //git
+=======
+
+//devops
+>>>>>>> 12062696d1d378ff7373983e2038085022c13d15
 require_once('include/config.php');
 require_once('include/auxiliar.php');
 
